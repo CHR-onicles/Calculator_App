@@ -1,7 +1,3 @@
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-
 
 import icons_rc, styles
 from custom_widgets import *
@@ -32,11 +28,15 @@ class UiMainWindow(QWidget):
     def ui_widgets(self):
 
         # <TOP WIDGETS>
+
+        # </TOP WIDGETS>
+
+        # <MIDDLE WIDGETS>
         self.calc_screen = NoCursorLineEdit()
         self.calc_screen.setObjectName('calc-screen')
         self.calc_screen.setAlignment(Qt.AlignRight)
 
-        # </TOP WIDGETS>
+        # </MIDDLE WIDGETS>
 
 
         # <BOTTOM WIDGETS>
@@ -80,15 +80,21 @@ class UiMainWindow(QWidget):
 
     def ui_layouts(self):
         self.main_layout = QVBoxLayout()
-        self.top_layout = QVBoxLayout()
-        self.top_layout.setContentsMargins(0, 0, 0, 0)
+        self.top_layout = QHBoxLayout()
+        self.middle_layout = QVBoxLayout()
+        self.middle_layout.setAlignment(Qt.AlignTop)
         self.bottom_layout = QGridLayout()
-        self.bottom_layout.setContentsMargins(0, 0, 0, 0)
         self.bottom_layout.setSpacing(3)
 
+
         # <TOP LAYOUT>
-        self.top_layout.addWidget(self.calc_screen)
+
         # </TOP LAYOUT>
+
+        # <MIDDLE LAYOUT>
+        self.middle_layout.addWidget(self.calc_screen)
+
+        # </MIDDLE LAYOUT>
 
 
         # <BOTTOM LAYOUT>
@@ -108,7 +114,8 @@ class UiMainWindow(QWidget):
 
         # </BOTTOM LAYOUT>
 
-        self.main_layout.addLayout(self.top_layout, 30)
+        self.main_layout.addLayout(self.top_layout, 10)
+        self.main_layout.addLayout(self.middle_layout, 20)
         self.main_layout.addLayout(self.bottom_layout, 70)
         self.setLayout(self.main_layout)
 
