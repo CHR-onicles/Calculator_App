@@ -22,12 +22,11 @@ def main_window_style():
     QToolButton {
         background-color: #353535;
         border: 1px solid #353535;
-        padding: 15px 15px 10px;
+        padding: 15px 15px 10px;  /* top, right&left, bottom */
     }
     
     QToolButton:hover {
         background-color: rgba(255,255,255,20);
-
     }
     
     QLabel {

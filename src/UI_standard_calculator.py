@@ -81,7 +81,32 @@ class UiMainWindow(QWidget):
         self.all_btns[-1].setIconSize(QSize(20, 23))
 
         # </BOTTOM WIDGETS>
-        # print(len(self.all_btns), self.all_btns)
+
+        # <LEFT WIDGET>
+        self.sliding_menu = QWidget(self)
+        self.sliding_menu.setVisible(False)
+        self.sliding_menu.setFixedWidth(200)
+        # moving the menu outside the window left margin
+        self.sliding_menu.move(-self.sliding_menu.width(), 0)
+
+        # Animation to move the menu laterally
+        self.menu_animation = QVariantAnimation()
+        self.menu_animation.setDuration(500)
+        self.menu_animation.setEasingCurve(QEasingCurve.OutQuart)
+        self.menu_animation.setStartValue(-self.sliding_menu.width())
+        self.menu_animation.setEndValue(0)
+        self.menu_animation.valueChanged.connect(self.on_resize_menu)
+        self.menu_animation.finished.connect(self.on_animation_finished)
+
+        self.btn_menu_close = QPushButton('Close Menu')
+        self.btn_menu_close.clicked.connect(self.on_close_menu)
+
+        # Simple transparent widget to hide the menu when clicking outside it;
+        # Event filter is to capture click events it may receive
+        self.click_grabber = QWidget(self)
+        self.click_grabber.installEventFilter(self)
+        self.click_grabber.setVisible(False)
+        # </LEFT WIDGET>
 
 
     def ui_layouts(self):
@@ -91,6 +116,8 @@ class UiMainWindow(QWidget):
         self.middle_layout.setAlignment(Qt.AlignTop)
         self.bottom_layout = QGridLayout()
         self.bottom_layout.setSpacing(3)
+        self.menu_layout = QVBoxLayout(self.sliding_menu)
+        # self.menu_layout.addSpacing(20)
 
 
         # <TOP LAYOUT>
@@ -100,7 +127,6 @@ class UiMainWindow(QWidget):
 
         # <MIDDLE LAYOUT>
         self.middle_layout.addWidget(self.calc_screen)
-
         # </MIDDLE LAYOUT>
 
 
@@ -118,11 +144,25 @@ class UiMainWindow(QWidget):
             # print(self.all_btns[i], self.all_btns_text[i])
 
             col += 1
-
         # </BOTTOM LAYOUT>
+
+        # <LEFT LAYOUT>
+        self.menu_layout.addWidget(self.btn_menu_close)
+        self.menu_layout.addStretch(1)  # to ensure button are aligned on top
+        # </LEFT LAYOUT>
 
         self.main_layout.addLayout(self.top_layout, 10)
         self.main_layout.addLayout(self.middle_layout, 20)
         self.main_layout.addLayout(self.bottom_layout, 70)
         self.setLayout(self.main_layout)
+
+
+    def on_resize_menu(self):
+        pass
+
+    def on_animation_finished(self):
+        pass
+
+    def on_close_menu(self):
+        pass
 
