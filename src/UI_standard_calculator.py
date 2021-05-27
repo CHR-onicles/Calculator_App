@@ -28,6 +28,10 @@ class UiMainWindow(QWidget):
     def ui_widgets(self):
 
         # <TOP WIDGETS>
+        self.btn_slide_menu = QPushButton()
+        self.btn_slide_menu.setIcon(QIcon(':/icons/menu-icon'))
+        self.btn_slide_menu.setIconSize(QSize(25, 25))
+        self.btn_slide_menu.setObjectName('menu-btn')
 
         # </TOP WIDGETS>
 
@@ -88,7 +92,7 @@ class UiMainWindow(QWidget):
 
 
         # <TOP LAYOUT>
-
+        self.top_layout.addWidget(self.btn_slide_menu)
         # </TOP LAYOUT>
 
         # <MIDDLE LAYOUT>

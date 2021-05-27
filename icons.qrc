@@ -10,6 +10,7 @@
     <file alias="square-root">images/square-root-sign2w.png</file>
     <file alias="squared2">images/squared-sign2w.png</file>
     <file alias="inverse">images/inverse-signw.png</file>
+    <file alias="menu-icon">images/menuw.png</file>
 
   </qresource>
 </RCC>

@@ -18,5 +18,10 @@ def main_window_style():
         padding-top: 10px;
         selection-background-color: #666;        
     }
+    
+    QPushButton#menu-btn {
+        background-color: #353535;
+        min-width: 3em;
+    }
         
     """
