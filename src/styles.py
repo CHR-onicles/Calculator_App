@@ -19,9 +19,16 @@ def main_window_style():
         selection-background-color: #666;        
     }
     
-    QPushButton#menu-btn {
+    QToolButton {
         background-color: #353535;
-        min-width: 3em;
+        border: 1px solid #353535;
+        padding: 15px;
     }
+    
+    QToolButton:hover {
+        background-color: rgba(255,255,255,20);
+
+    }
+    
         
     """
