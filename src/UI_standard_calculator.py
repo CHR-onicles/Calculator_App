@@ -93,7 +93,6 @@ class UiMainWindow(QWidget):
         self.all_btns[15].setIconSize(QSize(20, 20))
         self.all_btns[3].setIconSize(QSize(23, 23))
         self.all_btns[-1].setIconSize(QSize(20, 23))
-
         # </BOTTOM WIDGETS>
 
         # <LEFT WIDGET>
@@ -153,8 +152,6 @@ class UiMainWindow(QWidget):
             i.setStyleSheet(btn_stylesheet('rgba(255,255,255,40)'))
         self.btn_menu_close.clicked.connect(self.on_close_menu)
         self.btn_menu_close.setStyleSheet(btn_stylesheet('rgba(232,17,21,255)'))
-
-
         # </LEFT WIDGET>
 
 
