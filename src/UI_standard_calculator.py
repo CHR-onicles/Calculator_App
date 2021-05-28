@@ -19,7 +19,7 @@ class UiMainWindow(QWidget):
                               '7', '8', '9', '',
                               '4', '5', '6', '',
                               '1', '2', '3', '',
-                              '+/_', '0', '.', '',
+                              '', '0', '.', '',
                               )
 
         self.sub_widget = QWidget()  # main widget that contains the visual components
@@ -81,7 +81,9 @@ class UiMainWindow(QWidget):
         self.all_btns[6].setIcon(QIcon(':/icons/square-root'))
         self.all_btns[5].setIcon(QIcon(':/icons/squared2'))
         self.all_btns[4].setIcon(QIcon(':/icons/inverse'))
+        self.all_btns[20].setIcon(QIcon(':/icons/plus-minus'))
 
+        self.all_btns[20].setIconSize(QSize(20, 20))
         self.all_btns[4].setIconSize(QSize(23, 23))
         self.all_btns[5].setIconSize(QSize(25, 25))
         self.all_btns[6].setIconSize(QSize(25, 25))

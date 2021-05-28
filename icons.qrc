@@ -10,6 +10,7 @@
     <file alias="square-root">images/square-root-x-signw.png</file>
     <file alias="squared2">images/squared-sign2w.png</file>
     <file alias="inverse">images/inverse-signw.png</file>
+    <file alias="plus-minus">images/plus-minus-signw.png</file>
     <file alias="menu-icon">images/menuw.png</file>
     <file alias="standard-menu-icon">images/calc_iconw.png</file>
     <file alias="scientific-menu-icon">images/test-tubew.png</file>
