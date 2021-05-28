@@ -52,6 +52,16 @@ class MainApp(UiMainWindow, QMainWindow):
         #         self.all_btns[8].setEnabled(False)
 
 
+        if index == 11:  # multiplication button clicked
+            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
+                self.small_calc_screen.setText('0 x ')
+
+            else:
+                self.small_calc_screen.setText(self.calc_screen.text() + ' x ')
+                self.calc_screen.setText('0')
+
+            self.current_operation = 'mul'
+
         if index == 15:  # subtraction button clicked
             if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
                 self.small_calc_screen.setText('0 - ')
@@ -78,8 +88,16 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText(str(Ops.add(self.small_calc_screen.text().split()[0],
                                                      self.small_calc_screen.text().split()[2])))
             elif self.current_operation == 'sub':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.subtract(self.small_calc_screen.text().split()[0],
+                                                          self.small_calc_screen.text().split()[2])))
 
+            elif self.current_operation == 'mul':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.multiply(self.small_calc_screen.text().split()[0],
+                                                          self.small_calc_screen.text().split()[2])))
 
+            # todo: disable equal to button after clicked once
 
 
 if __name__ == '__main__':
