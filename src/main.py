@@ -24,6 +24,7 @@ class MainApp(UiMainWindow, QMainWindow):
     def on_num_btn_click(self, btn, index):
         if btn.text() in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
             self.calc_screen.setText(self.calc_screen.text() + btn.text())
+            self.small_calc_screen.setText(self.calc_screen.text() + btn.text())
         if index == 3:
             if self.calc_screen.text() != '':
                 self.calc_screen.setText(self.calc_screen.text()[0:-1])

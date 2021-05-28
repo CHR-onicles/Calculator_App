@@ -47,6 +47,10 @@ class UiMainWindow(QWidget):
         # </TOP WIDGETS>
 
         # <MIDDLE WIDGETS>
+        self.small_calc_screen = NoCursorLineEdit()
+        self.small_calc_screen.setObjectName('small-calc-screen')
+        self.small_calc_screen.setAlignment(Qt.AlignRight)
+        self.small_calc_screen.setReadOnly(True)
         self.calc_screen = NoCursorLineEdit()
         self.calc_screen.setObjectName('calc-screen')
         self.calc_screen.setAlignment(Qt.AlignRight)
@@ -161,7 +165,6 @@ class UiMainWindow(QWidget):
         self.bottom_layout = QGridLayout()
         self.bottom_layout.setSpacing(3)
         self.menu_layout = QVBoxLayout(self.sliding_menu)
-        # self.menu_layout.addSpacing(20)
 
 
         # <TOP LAYOUT>
@@ -170,6 +173,7 @@ class UiMainWindow(QWidget):
         # </TOP LAYOUT>
 
         # <MIDDLE LAYOUT>
+        self.middle_layout.addWidget(self.small_calc_screen)
         self.middle_layout.addWidget(self.calc_screen)
         # </MIDDLE LAYOUT>
 

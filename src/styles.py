@@ -20,9 +20,9 @@ def main_window_style():
     }
     
     QLineEdit#small-calc-screen {
-        font-size: 11pt;
+        font-size: 13pt;
         color: silver;
-        borer: none;
+        border: none;
         background-color: transparent;
     }
     
