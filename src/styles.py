@@ -47,19 +47,3 @@ def main_window_style():
     
         
     """
-
-# NOT WORKING - SEEMS UNREACHABLE
-# def sub_widget_style():
-#     return """
-#     QPushButton#menu-btn {
-#
-#     }
-#
-#     QPushButton#menu-btn-close {
-#         background-color: blue;
-#     }
-#
-#     QPushButton#menu-btn-close:hover {
-#         background-color: #e81133;
-#     }
-#     """

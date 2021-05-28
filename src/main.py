@@ -117,6 +117,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
             # todo: disable equal to button after clicked once
+            #   - add general case for dividing by zero to reduce duplication
 
 
 if __name__ == '__main__':

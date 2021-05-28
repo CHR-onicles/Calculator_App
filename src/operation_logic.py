@@ -2,7 +2,7 @@
 
 class Operations:
     """
-    Add documentation
+    Class containing all logical operations of calculator.
     """
 
     @staticmethod
