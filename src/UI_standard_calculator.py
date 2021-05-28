@@ -22,6 +22,20 @@ class UiMainWindow(QWidget):
                               '+/_', '0', '.', '',
                               )
 
+        p = self.palette()
+        p.setBrush(p.Window, QBrush(QColor('#353535')))
+        self.setPalette(p)
+
+        self.sub_widget = QWidget()
+        self.sub_widget.setStyleSheet('background-color: #353535;')
+
+        # Didnt add the background thingy!! - NB
+
+        self.effect = BlurEffect()
+        self.sub_widget.setGraphicsEffect(self.effect)
+        self.effect.setEnabled(False)
+        self.effect.setBlurRadius(10)
+
         self.ui_widgets()
         self.ui_layouts()
 
@@ -112,6 +126,7 @@ class UiMainWindow(QWidget):
 
     def ui_layouts(self):
         self.main_layout = QVBoxLayout()
+        self.sub_layout = QVBoxLayout()
         self.top_layout = QHBoxLayout()
         self.middle_layout = QVBoxLayout()
         self.middle_layout.setAlignment(Qt.AlignTop)
@@ -157,9 +172,13 @@ class UiMainWindow(QWidget):
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
         # </LEFT LAYOUT>
 
-        self.main_layout.addLayout(self.top_layout, 10)
-        self.main_layout.addLayout(self.middle_layout, 20)
-        self.main_layout.addLayout(self.bottom_layout, 70)
+        self.sub_layout.addLayout(self.top_layout, 10)
+        self.sub_layout.addLayout(self.middle_layout, 20)
+        self.sub_layout.addLayout(self.bottom_layout, 70)
+        self.sub_widget.setLayout(self.sub_layout)
+        self.sub_widget.setContentsMargins(0, 0, 0, 0)
+        self.main_layout.addWidget(self.sub_widget)
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.main_layout)
 
 
@@ -173,7 +192,9 @@ class UiMainWindow(QWidget):
         self.sliding_menu.move(-self.sliding_menu.width(), 0)
         self.sliding_menu.setVisible(True)
         self.sliding_menu.setFocus()
-        self.sliding_menu.setStyleSheet('background-color: rgba(20,20,20,190);')
+        self.effect.setEffectRect(self.sliding_menu.geometry())
+        self.effect.setEnabled(True)
+        # self.sliding_menu.setStyleSheet('background-color: rgba(20,20,20,190);')
         self.sliding_menu.raise_()
 
         # Set the forward for the animation and stary it;
@@ -188,7 +209,9 @@ class UiMainWindow(QWidget):
         self.click_grabber.stackUnder(self.sliding_menu)
 
     def on_resize_menu(self, value):
+        # move the menu and set its geometry to the effect
         self.sliding_menu.move(value, 0)
+        self.effect.setEffectRect(self.sliding_menu.geometry())
 
 
     def on_animation_finished(self):
@@ -196,6 +219,7 @@ class UiMainWindow(QWidget):
         # it means that the menu has been closed. Hide it.
         if self.menu_animation.direction() == QVariantAnimation.Backward:
             self.sliding_menu.hide()
+            self.effect.setEnabled(False)
 
 
     def on_close_menu(self):
@@ -226,6 +250,9 @@ class UiMainWindow(QWidget):
         self.sliding_menu.setFixedHeight(self.height())
         # Resize the grabber to the window rectangle, even if it's invisible
         self.click_grabber.setGeometry(self.rect())
+        if self.sliding_menu.isVisible():
+            # resize the effect rectange
+            self.effect.setEffectRect(self.sliding_menu.geometry())
 
 
 
