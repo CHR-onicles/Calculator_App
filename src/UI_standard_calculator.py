@@ -23,7 +23,7 @@ class UiMainWindow(QWidget):
                               )
 
         self.sub_widget = QWidget()  # main widget that contains the visual components
-        self.sub_widget.setStyleSheet('background-color: #353535;')
+        # self.sub_widget.setStyleSheet(styles.sub_widget_style())  # not working
 
         self.effect = BlurEffect()
         self.sub_widget.setGraphicsEffect(self.effect)
@@ -108,14 +108,36 @@ class UiMainWindow(QWidget):
         self.menu_animation.valueChanged.connect(self.on_resize_menu)
         self.menu_animation.finished.connect(self.on_animation_finished)
 
-        self.btn_menu_close = QPushButton('Close Menu')
-        self.btn_menu_close.clicked.connect(self.on_close_menu)
-
         # Simple transparent widget to hide the menu when clicking outside it;
         # Event filter is to capture click events it may receive
         self.click_grabber = QWidget(self)
         self.click_grabber.installEventFilter(self)
         self.click_grabber.setVisible(False)
+
+        # BUTTONS
+
+        def btn_stylesheet(bg_color):
+            return ("""
+            QPushButton {
+                background-color: transparent;
+                padding: 10px 0px;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: %s;
+            }
+            """ % bg_color)
+
+        self.btn_menu_std = QPushButton('Standard')
+        self.btn_menu_sci = QPushButton('Scientific')
+        self.btn_menu_about = QPushButton('About')
+        self.btn_menu_close = QPushButton('Close')
+        for i in (self.btn_menu_std, self.btn_menu_sci, self.btn_menu_about, self.btn_menu_close):
+            i.setStyleSheet(btn_stylesheet('rgba(255,255,255,40)'))
+        self.btn_menu_close.clicked.connect(self.on_close_menu)
+        self.btn_menu_close.setStyleSheet(btn_stylesheet('rgba(232,17,21,255)'))
+
+
         # </LEFT WIDGET>
 
 
@@ -159,12 +181,9 @@ class UiMainWindow(QWidget):
 
         # <LEFT LAYOUT>
         self.menu_layout.addWidget(QLabel('Menu'))
-        # dummy buttons
-        for b in range(4):
-            btn = QPushButton(f'Button {b+1}')
-            btn.setStyleSheet('background-color: #333; border: 1px solid silver;'
-                              'padding: 5px 0px;')
-            self.menu_layout.addWidget(btn)
+        self.menu_layout.addWidget(self.btn_menu_std)
+        self.menu_layout.addWidget(self.btn_menu_sci)
+        self.menu_layout.addWidget(self.btn_menu_about)
         self.menu_layout.addWidget(self.btn_menu_close)
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
         # </LEFT LAYOUT>
