@@ -206,6 +206,7 @@ class UiMainWindow(QWidget):
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
         # </LEFT LAYOUT>
 
+
         self.sub_layout.addLayout(self.top_layout, 10)
         self.sub_layout.addLayout(self.middle_layout, 20)
         self.sub_layout.addLayout(self.bottom_layout, 70)
