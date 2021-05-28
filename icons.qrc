@@ -15,6 +15,7 @@
     <file alias="standard-menu-icon">images/calc_iconw.png</file>
     <file alias="scientific-menu-icon">images/test-tubew.png</file>
     <file alias="about-menu-icon">images/about-iconw.png</file>
+    <file alias="exit-icon">images/exitw.png</file>
 
   </qresource>
 </RCC>

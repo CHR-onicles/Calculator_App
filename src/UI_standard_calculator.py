@@ -32,8 +32,8 @@ class UiMainWindow(QWidget):
         self.ui_widgets()
         self.ui_layouts()
 
-    def ui_widgets(self):
 
+    def ui_widgets(self):
         # <TOP WIDGETS>
         self.btn_slide_menu = QToolButton()
         self.btn_slide_menu.setIcon(QIcon(':/icons/menu-icon'))
@@ -146,7 +146,7 @@ class UiMainWindow(QWidget):
         self.btn_menu_about = QPushButton('   About    ')
         self.btn_menu_about.setIcon(QIcon(':/icons/about-menu-icon'))
         self.btn_menu_close = QPushButton('   Close     ')
-        self.btn_menu_close.setIcon(QIcon(':/icons/multiplication'))
+        self.btn_menu_close.setIcon(QIcon(':/icons/exit-icon'))
 
         for i in (self.btn_menu_std, self.btn_menu_sci, self.btn_menu_about, self.btn_menu_close):
             i.setStyleSheet(btn_stylesheet('rgba(255,255,255,40)'))
