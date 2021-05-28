@@ -150,6 +150,7 @@ class UiMainWindow(QWidget):
         # <LEFT LAYOUT>
         for b in range(4):
             btn = QPushButton(f'Button {b+1}')
+            btn.setStyleSheet('background-color: #333; border: 1px solid silver; border-radius: 5px;')
             self.menu_layout.addWidget(btn)
         self.menu_layout.addWidget(self.btn_menu_close)
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
@@ -171,7 +172,7 @@ class UiMainWindow(QWidget):
         self.sliding_menu.move(-self.sliding_menu.width(), 0)
         self.sliding_menu.setVisible(True)
         self.sliding_menu.setFocus()
-        self.sliding_menu.setStyleSheet('background-color: #444;')
+        self.sliding_menu.setStyleSheet('background-color: rgba(20,20,20,190);')
         self.sliding_menu.raise_()
 
         # Set the forward for the animation and stary it;
