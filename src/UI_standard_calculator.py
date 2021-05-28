@@ -32,6 +32,7 @@ class UiMainWindow(QWidget):
         self.btn_slide_menu.setIcon(QIcon(':/icons/menu-icon'))
         self.btn_slide_menu.setIconSize(QSize(25, 25))
         self.btn_slide_menu.setObjectName('menu-btn')
+        self.btn_slide_menu.clicked.connect(self.on_open_menu)
 
         self.lbl_calc = QLabel('Standard')
 
@@ -85,7 +86,7 @@ class UiMainWindow(QWidget):
         # <LEFT WIDGET>
         self.sliding_menu = QWidget(self)
         self.sliding_menu.setVisible(False)
-        self.sliding_menu.setFixedWidth(200)
+        self.sliding_menu.setFixedWidth(300)
         # moving the menu outside the window left margin
         self.sliding_menu.move(-self.sliding_menu.width(), 0)
 
@@ -147,6 +148,9 @@ class UiMainWindow(QWidget):
         # </BOTTOM LAYOUT>
 
         # <LEFT LAYOUT>
+        for b in range(4):
+            btn = QPushButton(f'Button {b+1}')
+            self.menu_layout.addWidget(btn)
         self.menu_layout.addWidget(self.btn_menu_close)
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
         # </LEFT LAYOUT>
@@ -157,12 +161,69 @@ class UiMainWindow(QWidget):
         self.setLayout(self.main_layout)
 
 
-    def on_resize_menu(self):
-        pass
+    def on_open_menu(self):
+        if self.sliding_menu.x() >= 0:
+            # means the menu is already visible
+            return
+
+        # Ensure that the menu starts hidden
+        # (ie with its right border aligned to the left of the main widget)
+        self.sliding_menu.move(-self.sliding_menu.width(), 0)
+        self.sliding_menu.setVisible(True)
+        self.sliding_menu.setFocus()
+        self.sliding_menu.setStyleSheet('background-color: #444;')
+        self.sliding_menu.raise_()
+
+        # Set the forward for the animation and stary it;
+        self.menu_animation.setDirection(QVariantAnimation.Forward)
+        self.menu_animation.start()
+
+        # "Show" the grabber (it's invisible but present) and resize it
+        # to cover the whole window area.
+        self.click_grabber.setGeometry(self.rect())
+        self.click_grabber.setVisible(True)
+        # ensuring that it is stacked under the menu and above everything else
+        self.click_grabber.stackUnder(self.sliding_menu)
+
+    def on_resize_menu(self, value):
+        self.sliding_menu.move(value, 0)
+
 
     def on_animation_finished(self):
-        pass
+        # If the animation has ended and the direction was backwards,
+        # it means that the menu has been closed. Hide it.
+        if self.menu_animation.direction() == QVariantAnimation.Backward:
+            self.sliding_menu.hide()
+
 
     def on_close_menu(self):
-        pass
+        self.menu_animation.setStartValue(-self.sliding_menu.width())
+        self.menu_animation.setDirection(QVariantAnimation.Backward)
+        self.menu_animation.start()
+        # hide the click grabber
+        self.click_grabber.setVisible(False)
+
+
+    # def focusNextPrevChild(self, next: bool):
+    #     # small hack to prevent tab giving focus to widgets when the menu is visible
+    #     if self.sliding_menu.isVisible():
+    #         return False
+    #     return super().focusNextPrevChild(next)
+
+
+    def eventFilter(self, source, event):
+        if source == self.click_grabber and event.type() == QEvent.MouseButtonPress:
+            # the grabber has been clicked, close the menu
+            self.on_close_menu()
+        return super().eventFilter(source, event)
+
+
+    def resizeEvent(self, event):
+        super(UiMainWindow, self).resizeEvent(event)
+        # Always set the mneu height to that of the window
+        self.sliding_menu.setFixedHeight(self.height())
+        # Resize the grabber to the window rectangle, even if it's invisible
+        self.click_grabber.setGeometry(self.rect())
+
+
 
