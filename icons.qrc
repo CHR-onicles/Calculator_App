@@ -12,6 +12,8 @@
     <file alias="inverse">images/inverse-signw.png</file>
     <file alias="menu-icon">images/menuw.png</file>
     <file alias="standard-menu-icon">images/calc_iconw.png</file>
+    <file alias="scientific-menu-icon">images/test-tubew.png</file>
+    <file alias="about-menu-icon">images/about-iconw.png</file>
 
   </qresource>
 </RCC>

@@ -107,3 +107,48 @@ class BlurEffect(QGraphicsBlurEffect):
 
 
 
+# THIS BREAKS MY APPS UI
+# class ProxyStyle(QProxyStyle):
+#     def drawControl(self, element, option, painter, widget=None):
+#         if element == QStyle.CE_PushButtonLabel:
+#             icon = QIcon(option.icon)
+#             option.icon = QIcon()
+#         super(ProxyStyle, self).drawControl(element, option, painter, widget)
+#         if element == QStyle.CE_PushButtonLabel:
+#             if not icon.isNull():
+#                 iconSpacing = 4
+#                 mode = (
+#                     QIcon.Normal
+#                     if option.state & QStyle.State_Enabled
+#                     else QIcon.Disabled
+#                 )
+#                 if (
+#                     mode == QIcon.Normal
+#                     and option.state & QStyle.State_HasFocus
+#                 ):
+#                     mode = QIcon.Active
+#                 state = QIcon.Off
+#                 if option.state & QStyle.State_On:
+#                     state = QIcon.On
+#                 window = widget.window().windowHandle() if widget is not None else None
+#                 pixmap = icon.pixmap(window, option.iconSize, mode, state)
+#                 pixmapWidth = pixmap.width() / pixmap.devicePixelRatio()
+#                 pixmapHeight = pixmap.height() / pixmap.devicePixelRatio()
+#                 iconRect = QRect(
+#                     QPoint(), QSize(pixmapWidth, pixmapHeight)
+#                 )
+#                 iconRect.moveCenter(option.rect.center())
+#                 iconRect.moveLeft(option.rect.left() + iconSpacing)
+#                 iconRect = self.visualRect(option.direction, option.rect, iconRect)
+#                 iconRect.translate(
+#                     self.proxy().pixelMetric(
+#                         QStyle.PM_ButtonShiftHorizontal, option, widget
+#                     ),
+#                     self.proxy().pixelMetric(
+#                         QStyle.PM_ButtonShiftVertical, option, widget
+#                     ),
+#                 )
+#                 painter.drawPixmap(iconRect, pixmap)
+
+
+
