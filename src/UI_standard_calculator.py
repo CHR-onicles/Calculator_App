@@ -10,7 +10,7 @@ class UiMainWindow(QWidget):
         super(UiMainWindow, self).__init__()
         self.setWindowTitle('Calculator')
         self.setWindowIcon(QIcon(':/icons/calc-icon'))
-        self.setFixedSize(390, 600)
+        self.setFixedSize(400, 600)
         self.setObjectName('mainwindow')
         self.setStyleSheet(styles.main_window_style())
 
@@ -23,7 +23,6 @@ class UiMainWindow(QWidget):
                               )
 
         self.sub_widget = QWidget()  # main widget that contains the visual components
-        # self.sub_widget.setStyleSheet(styles.sub_widget_style())  # not working
 
         self.effect = BlurEffect()
         self.sub_widget.setGraphicsEffect(self.effect)
@@ -48,6 +47,7 @@ class UiMainWindow(QWidget):
 
         # <MIDDLE WIDGETS>
         self.small_calc_screen = NoCursorLineEdit()
+        self.small_calc_screen.setMaxLength(12)
         self.small_calc_screen.setObjectName('small-calc-screen')
         self.small_calc_screen.setAlignment(Qt.AlignRight)
         self.small_calc_screen.setReadOnly(True)

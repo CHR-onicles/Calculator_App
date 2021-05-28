@@ -34,6 +34,16 @@ class Operations:
             val2 = Operations.convert_to_int_or_float(val2)
             return val1 * val2
 
+    @staticmethod
+    def division(val1, val2):
+        if isinstance(val1, str) and isinstance(val2, str):
+            val1 = Operations.convert_to_int_or_float(val1)
+            val2 = Operations.convert_to_int_or_float(val2)
+            if len(str(val1/val2)) > 12:
+                result = round(val1/val2, 11)
+
+            return result
+
 
 
 
