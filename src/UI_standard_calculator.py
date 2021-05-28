@@ -22,11 +22,7 @@ class UiMainWindow(QWidget):
                               '+/_', '0', '.', '',
                               )
 
-        p = self.palette()
-        p.setBrush(p.Window, QBrush(QColor('#353535')))
-        self.setPalette(p)
-
-        self.sub_widget = QWidget()
+        self.sub_widget = QWidget()  # main widget that contains the visual components
         self.sub_widget.setStyleSheet('background-color: #353535;')
 
         self.effect = BlurEffect()
@@ -47,6 +43,7 @@ class UiMainWindow(QWidget):
         self.btn_slide_menu.clicked.connect(self.on_open_menu)
 
         self.lbl_calc = QLabel('Standard')
+        self.lbl_calc.setObjectName('lbl-calc')
 
         # </TOP WIDGETS>
 
@@ -161,6 +158,7 @@ class UiMainWindow(QWidget):
         # </BOTTOM LAYOUT>
 
         # <LEFT LAYOUT>
+        self.menu_layout.addWidget(QLabel('Menu'))
         # dummy buttons
         for b in range(4):
             btn = QPushButton(f'Button {b+1}')

@@ -29,7 +29,7 @@ def main_window_style():
         background-color: rgba(255,255,255,20);
     }
     
-    QLabel {
+    QLabel#lbl-calc {
         font-weight: 500;
         font-size: 16pt;
     }
