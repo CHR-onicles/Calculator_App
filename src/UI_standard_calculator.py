@@ -29,8 +29,6 @@ class UiMainWindow(QWidget):
         self.sub_widget = QWidget()
         self.sub_widget.setStyleSheet('background-color: #353535;')
 
-        # Didnt add the background thingy!! - NB
-
         self.effect = BlurEffect()
         self.sub_widget.setGraphicsEffect(self.effect)
         self.effect.setEnabled(False)
@@ -163,9 +161,10 @@ class UiMainWindow(QWidget):
         # </BOTTOM LAYOUT>
 
         # <LEFT LAYOUT>
+        # dummy buttons
         for b in range(4):
             btn = QPushButton(f'Button {b+1}')
-            btn.setStyleSheet('background-color: #333; border: 1px solid silver; border-radius: 5px;'
+            btn.setStyleSheet('background-color: #333; border: 1px solid silver;'
                               'padding: 5px 0px;')
             self.menu_layout.addWidget(btn)
         self.menu_layout.addWidget(self.btn_menu_close)
@@ -194,7 +193,7 @@ class UiMainWindow(QWidget):
         self.sliding_menu.setFocus()
         self.effect.setEffectRect(self.sliding_menu.geometry())
         self.effect.setEnabled(True)
-        # self.sliding_menu.setStyleSheet('background-color: rgba(20,20,20,190);')
+        self.sliding_menu.setStyleSheet('background-color: rgba(15,15,15,60);')
         self.sliding_menu.raise_()
 
         # Set the forward for the animation and stary it;
