@@ -39,6 +39,9 @@ class MainApp(UiMainWindow, QMainWindow):
         if index == 3:  # backspace button clicked
             if self.calc_screen.text() == '0':
                 return
+            if self.small_calc_screen.text() != '':
+                self.small_calc_screen.setText('')
+                return
             elif len(self.calc_screen.text()) == 1 and self.calc_screen.text() != '0':
                 self.calc_screen.setText('0')
             elif self.calc_screen.text() != '':
