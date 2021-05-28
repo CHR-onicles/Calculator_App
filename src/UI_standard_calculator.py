@@ -133,7 +133,9 @@ class UiMainWindow(QWidget):
         self.btn_menu_sci.setIcon(QIcon(':/icons/scientific-menu-icon'))
         self.btn_menu_about = QPushButton('   About    ')
         self.btn_menu_about.setIcon(QIcon(':/icons/about-menu-icon'))
-        self.btn_menu_close = QPushButton('Close')
+        self.btn_menu_close = QPushButton('   Close    ')
+        self.btn_menu_close.setIcon(QIcon(':/icons/multiplication'))
+
         for i in (self.btn_menu_std, self.btn_menu_sci, self.btn_menu_about, self.btn_menu_close):
             i.setStyleSheet(btn_stylesheet('rgba(255,255,255,40)'))
         self.btn_menu_close.clicked.connect(self.on_close_menu)
