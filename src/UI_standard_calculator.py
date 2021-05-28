@@ -84,7 +84,7 @@ class UiMainWindow(QWidget):
         self.all_btns[20].setIcon(QIcon(':/icons/plus-minus'))
 
         self.all_btns[20].setIconSize(QSize(20, 20))
-        self.all_btns[4].setIconSize(QSize(23, 23))
+        self.all_btns[4].setIconSize(QSize(20, 20))
         self.all_btns[5].setIconSize(QSize(25, 25))
         self.all_btns[6].setIconSize(QSize(25, 25))
         self.all_btns[19].setIconSize(QSize(23, 23))
