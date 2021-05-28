@@ -1,9 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import *
-
-
-from UI_standard_calculator import UiMainWindow
+from UI_standard_calculator import *
 
 
 
