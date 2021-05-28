@@ -14,8 +14,7 @@ def main_window_style():
         font-size: 30pt;
         background-color: transparent;
         font-weight: bold;
-        padding-bottom: 10px;
-        padding-top: 10px;
+        padding: 5px 0px;
         selection-background-color: #666;        
     }
     
@@ -24,6 +23,7 @@ def main_window_style():
         color: silver;
         border: none;
         background-color: transparent;
+        /*border: 1px solid red; */ /* for debugging */
     }
     
     QToolButton {

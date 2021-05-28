@@ -10,7 +10,7 @@ class UiMainWindow(QWidget):
         super(UiMainWindow, self).__init__()
         self.setWindowTitle('Calculator')
         self.setWindowIcon(QIcon(':/icons/calc-icon'))
-        self.setFixedSize(430, 620)
+        self.setFixedSize(390, 600)
         self.setObjectName('mainwindow')
         self.setStyleSheet(styles.main_window_style())
 
@@ -159,11 +159,14 @@ class UiMainWindow(QWidget):
         self.main_layout = QVBoxLayout()
         self.sub_layout = QVBoxLayout()
         self.top_layout = QHBoxLayout()
+        self.top_layout.setContentsMargins(0,0,0,0)
+        self.top_layout.setAlignment(Qt.AlignBottom)
         self.middle_layout = QVBoxLayout()
         self.middle_layout.setAlignment(Qt.AlignTop)
         self.middle_layout.setContentsMargins(0,0,0,10)
         self.bottom_layout = QGridLayout()
         self.bottom_layout.setSpacing(3)
+        self.bottom_layout.setAlignment(Qt.AlignBottom)
         self.menu_layout = QVBoxLayout(self.sliding_menu)
 
 
