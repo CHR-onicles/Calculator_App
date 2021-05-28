@@ -1,4 +1,4 @@
-# SCIENTIFIC CALCULATOR
+# CALCULATOR APP
 
 >Calculator app using PyQt5.
 > 
