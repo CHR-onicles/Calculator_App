@@ -82,9 +82,9 @@ class UiMainWindow(QWidget):
         self.all_btns[5].setIcon(QIcon(':/icons/squared2'))
         self.all_btns[4].setIcon(QIcon(':/icons/inverse'))
 
-        self.all_btns[4].setIconSize(QSize(25, 25))
+        self.all_btns[4].setIconSize(QSize(23, 23))
         self.all_btns[5].setIconSize(QSize(25, 25))
-        self.all_btns[6].setIconSize(QSize(23, 23))
+        self.all_btns[6].setIconSize(QSize(25, 25))
         self.all_btns[19].setIconSize(QSize(23, 23))
         self.all_btns[7].setIconSize(QSize(20, 20))
         self.all_btns[11].setIconSize(QSize(15, 15))
