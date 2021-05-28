@@ -19,6 +19,13 @@ def main_window_style():
         selection-background-color: #666;        
     }
     
+    QLineEdit#small-calc-screen {
+        font-size: 11pt;
+        color: silver;
+        borer: none;
+        background-color: transparent;
+    }
+    
     QToolButton {
         background-color: #353535;
         border: 1px solid #353535;

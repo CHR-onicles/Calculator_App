@@ -44,14 +44,12 @@ class UiMainWindow(QWidget):
 
         self.lbl_calc = QLabel('Standard')
         self.lbl_calc.setObjectName('lbl-calc')
-
         # </TOP WIDGETS>
 
         # <MIDDLE WIDGETS>
         self.calc_screen = NoCursorLineEdit()
         self.calc_screen.setObjectName('calc-screen')
         self.calc_screen.setAlignment(Qt.AlignRight)
-
         # </MIDDLE WIDGETS>
 
 
