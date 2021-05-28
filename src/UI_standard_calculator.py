@@ -150,7 +150,8 @@ class UiMainWindow(QWidget):
         # <LEFT LAYOUT>
         for b in range(4):
             btn = QPushButton(f'Button {b+1}')
-            btn.setStyleSheet('background-color: #333; border: 1px solid silver; border-radius: 5px;')
+            btn.setStyleSheet('background-color: #333; border: 1px solid silver; border-radius: 5px;'
+                              'padding: 5px 0px;')
             self.menu_layout.addWidget(btn)
         self.menu_layout.addWidget(self.btn_menu_close)
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
