@@ -11,6 +11,7 @@
     <file alias="squared2">images/squared-sign2w.png</file>
     <file alias="inverse">images/inverse-signw.png</file>
     <file alias="menu-icon">images/menuw.png</file>
+    <file alias="standard-menu-icon">images/calc_iconw.png</file>
 
   </qresource>
 </RCC>

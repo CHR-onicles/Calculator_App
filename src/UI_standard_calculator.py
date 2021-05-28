@@ -8,7 +8,7 @@ class UiMainWindow(QWidget):
 
     def __init__(self):
         super(UiMainWindow, self).__init__()
-        self.setWindowTitle('Calculator - Standard')
+        self.setWindowTitle('Calculator')
         self.setWindowIcon(QIcon(':/icons/calc-icon'))
         self.setFixedSize(430, 620)
         self.setObjectName('mainwindow')
@@ -115,7 +115,6 @@ class UiMainWindow(QWidget):
         self.click_grabber.setVisible(False)
 
         # BUTTONS
-
         def btn_stylesheet(bg_color):
             return ("""
             QPushButton {
@@ -129,6 +128,8 @@ class UiMainWindow(QWidget):
             """ % bg_color)
 
         self.btn_menu_std = QPushButton('Standard')
+        self.btn_menu_std.setIcon(QIcon(':/icons/standard-menu-icon'))
+
         self.btn_menu_sci = QPushButton('Scientific')
         self.btn_menu_about = QPushButton('About')
         self.btn_menu_close = QPushButton('Close')
@@ -214,7 +215,7 @@ class UiMainWindow(QWidget):
         # some flickering might show at the beginning
         self.effect.setEffectRect(self.sliding_menu.geometry())
         self.effect.setEnabled(True)
-        self.sliding_menu.setStyleSheet('background-color: rgba(15,15,15,60);')
+        self.sliding_menu.setStyleSheet('background-color: rgba(0,0,0,90);')
         self.sliding_menu.raise_()  # to put the menu in front of other widgets
         self.menu_animation.setDirection(QVariantAnimation.Forward)
         self.menu_animation.start()
