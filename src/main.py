@@ -64,7 +64,6 @@ class MainApp(UiMainWindow, QMainWindow):
 
             self.current_operation = 'div'
 
-
         if index == 11:  # multiplication button clicked
             if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
                 self.small_calc_screen.setText('0 x ')
@@ -117,7 +116,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
             # todo: disable equal to button after clicked once
-            #   - add general case for dividing by zero to reduce duplication
+            #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
 
 
 if __name__ == '__main__':
