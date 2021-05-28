@@ -114,6 +114,15 @@ class UiMainWindow(QWidget):
         self.click_grabber.installEventFilter(self)
         self.click_grabber.setVisible(False)
 
+        self.lbl_menu = QLabel('Menu')
+        self.lbl_menu.setAlignment(Qt.AlignCenter)
+        self.lbl_menu.setStyleSheet(
+            """
+            font-size: 18pt;
+            font-weight: 600;
+            background-color: transparent;
+            """)
+
         # BUTTONS
         def btn_stylesheet(bg_color):
             return ("""
@@ -133,7 +142,7 @@ class UiMainWindow(QWidget):
         self.btn_menu_sci.setIcon(QIcon(':/icons/scientific-menu-icon'))
         self.btn_menu_about = QPushButton('   About    ')
         self.btn_menu_about.setIcon(QIcon(':/icons/about-menu-icon'))
-        self.btn_menu_close = QPushButton('   Close    ')
+        self.btn_menu_close = QPushButton('   Close     ')
         self.btn_menu_close.setIcon(QIcon(':/icons/multiplication'))
 
         for i in (self.btn_menu_std, self.btn_menu_sci, self.btn_menu_about, self.btn_menu_close):
@@ -184,7 +193,10 @@ class UiMainWindow(QWidget):
         # </BOTTOM LAYOUT>
 
         # <LEFT LAYOUT>
-        self.menu_layout.addWidget(QLabel('Menu'))
+        self.menu_layout.addWidget(self.lbl_menu)
+        hsep_line = HSeparationLine()
+        hsep_line.setStyleSheet('background-color: silver;')
+        self.menu_layout.addWidget(hsep_line)
         self.menu_layout.addWidget(self.btn_menu_std)
         self.menu_layout.addWidget(self.btn_menu_sci)
         self.menu_layout.addWidget(self.btn_menu_about)
