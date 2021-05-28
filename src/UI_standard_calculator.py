@@ -162,6 +162,7 @@ class UiMainWindow(QWidget):
         self.top_layout = QHBoxLayout()
         self.middle_layout = QVBoxLayout()
         self.middle_layout.setAlignment(Qt.AlignTop)
+        self.middle_layout.setContentsMargins(0,0,0,10)
         self.bottom_layout = QGridLayout()
         self.bottom_layout.setSpacing(3)
         self.menu_layout = QVBoxLayout(self.sliding_menu)

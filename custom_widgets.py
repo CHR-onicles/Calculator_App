@@ -27,7 +27,7 @@ class PushButton(QPushButton):
         )
 
         self._update_stylesheet(QColor(basecolor))  # passing in default background color
-        self.setCursor(Qt.PointingHandCursor)
+        # self.setCursor(Qt.PointingHandCursor)
 
     def _on_value_changed(self, color):
         self._update_stylesheet(color)
