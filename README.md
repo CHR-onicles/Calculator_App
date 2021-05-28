@@ -9,8 +9,8 @@
 >*Current progress*
 
 <div style="display:flex; justify-content: space-evenly;">
-<img src='screenshots/progress-1.png' width="300" height="500">
-<img src="screenshots/progress-2.png" width="300" height="500">
+<img src='screenshots/ss-1.png' width="300" height="500">
+<img src="screenshots/ss-2.png" width="300" height="500">
 </div>
 
 
