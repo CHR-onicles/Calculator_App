@@ -191,12 +191,14 @@ class UiMainWindow(QWidget):
         self.sliding_menu.move(-self.sliding_menu.width(), 0)
         self.sliding_menu.setVisible(True)
         self.sliding_menu.setFocus()
+
+        # enable the effect, set the forward direction for the animation, and
+        # start it; it's important to set the effect rectangle here too, otherwise
+        # some flickering might show at the beginning
         self.effect.setEffectRect(self.sliding_menu.geometry())
         self.effect.setEnabled(True)
         self.sliding_menu.setStyleSheet('background-color: rgba(15,15,15,60);')
-        self.sliding_menu.raise_()
-
-        # Set the forward for the animation and stary it;
+        self.sliding_menu.raise_()  # to put the menu in front of other widgets
         self.menu_animation.setDirection(QVariantAnimation.Forward)
         self.menu_animation.start()
 
@@ -215,25 +217,21 @@ class UiMainWindow(QWidget):
 
     def on_animation_finished(self):
         # If the animation has ended and the direction was backwards,
-        # it means that the menu has been closed. Hide it.
+        # it means that the menu has been closed. Hide it and disable the effect.
         if self.menu_animation.direction() == QVariantAnimation.Backward:
             self.sliding_menu.hide()
             self.effect.setEnabled(False)
 
 
     def on_close_menu(self):
+        # in case that the menu has changed its size, set again the "start" value
+        # to its negative width, then set the animation direction to backwards
+        # and start it
         self.menu_animation.setStartValue(-self.sliding_menu.width())
         self.menu_animation.setDirection(QVariantAnimation.Backward)
         self.menu_animation.start()
         # hide the click grabber
         self.click_grabber.setVisible(False)
-
-
-    # def focusNextPrevChild(self, next: bool):
-    #     # small hack to prevent tab giving focus to widgets when the menu is visible
-    #     if self.sliding_menu.isVisible():
-    #         return False
-    #     return super().focusNextPrevChild(next)
 
 
     def eventFilter(self, source, event):
