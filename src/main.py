@@ -30,7 +30,7 @@ class MainApp(UiMainWindow, QMainWindow):
             self.calc_screen.setText(self.calc_screen.text() + btn.text())
 
         if index == 1:  # 'CE'(Clear Entry) button clicked
-            pass
+            self.calc_screen.setText('0')
 
         if index == 2:  # 'C'(Clear) button clicked
             self.small_calc_screen.setText('')
