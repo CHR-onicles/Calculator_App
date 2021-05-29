@@ -44,6 +44,12 @@ class Operations:
 
             return result
 
+    @staticmethod
+    def squared(val):
+        if isinstance(val, str):
+            val = Operations.convert_to_int_or_float(val)
+            return val ** 2
+
 
 
 

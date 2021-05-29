@@ -54,6 +54,16 @@ class MainApp(UiMainWindow, QMainWindow):
         #         self.calc_screen.setText('Zero division error')
         #         self.all_btns[8].setEnabled(False)
 
+        if index == 5:  # squared button clicked
+            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
+                self.small_calc_screen.setText('sqr( 0 ) ')
+
+            else:
+                self.small_calc_screen.setText('sqr( ' + self.calc_screen.text() + ' )')
+                self.calc_screen.setText('0')
+
+            self.current_operation = 'sqr'
+
         if index == 7:  # division button clicked
             if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
                 self.small_calc_screen.setText('0 / ')
@@ -114,6 +124,10 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText(str(Ops.division(self.small_calc_screen.text().split()[0],
                                                           self.small_calc_screen.text().split()[2])))
 
+            elif self.current_operation == 'sqr':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.squared(self.small_calc_screen.text().split()[1]
+                                                         )))
 
             # todo: disable equal to button after clicked once
             #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
