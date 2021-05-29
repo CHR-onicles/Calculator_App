@@ -139,7 +139,7 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText(str(Ops.squared(self.small_calc_screen.text().split()[1])))
 
             elif self.current_operation == 'neg':
-                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')  # fixme: doesn't show equal to
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
 
 
