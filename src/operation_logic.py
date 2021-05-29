@@ -41,8 +41,9 @@ class Operations:
             val2 = Operations.convert_to_int_or_float(val2)
             if len(str(val1/val2)) > 12:
                 result = round(val1/val2, 11)
-
-            return result
+                return result
+            else:
+                return val1/val2
 
     @staticmethod
     def squared(val):

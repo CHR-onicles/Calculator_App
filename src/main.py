@@ -115,6 +115,9 @@ class MainApp(UiMainWindow, QMainWindow):
             self.current_operation = 'neg'
 
         if index == 23:  # equal to button clicked
+            if '=' in self.small_calc_screen.text():
+                return  # do nothing if an answer has already been gotten
+
             if self.current_operation == 'add':
                 self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.add(self.small_calc_screen.text().split()[0],
@@ -143,7 +146,7 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
 
 
-            # todo: disable equal to button after clicked once
+            # todo:
             #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
 
 
