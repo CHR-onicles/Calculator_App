@@ -148,6 +148,8 @@ class MainApp(UiMainWindow, QMainWindow):
 
             # todo:
             #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
+            #   - Add calc screen validator from Med Bills App
+            #   - Let squared, inverse, negate and square root display answer on-click
 
 
 if __name__ == '__main__':
