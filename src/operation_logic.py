@@ -50,6 +50,12 @@ class Operations:
             val = Operations.convert_to_int_or_float(val)
             return val ** 2
 
+    @staticmethod
+    def negate(val):
+        if isinstance(val, str):
+            val = Operations.convert_to_int_or_float(val)
+            return -val
+
 
 
 

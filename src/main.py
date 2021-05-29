@@ -19,8 +19,8 @@ class MainApp(UiMainWindow, QMainWindow):
 
     def widgets(self):
         for count, x in enumerate(self.all_btns):
-            x.clicked.connect(lambda checked, index=count, btn=x: self.on_num_btn_click(btn,
-                                                                                        index))  # 'checked' is the default parameter that passes the clicked signal
+            x.clicked.connect(lambda checked, index=count,
+                                     btn=x: self.on_num_btn_click(btn, index))  # 'checked' is the default parameter that passes the clicked signal
 
 
     def on_num_btn_click(self, btn, index):
@@ -104,6 +104,16 @@ class MainApp(UiMainWindow, QMainWindow):
 
             self.current_operation = 'add'
 
+        if index == 20:  # plus-minus button clicked
+            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
+                return  # do nothing
+
+            else:
+                self.small_calc_screen.setText('negate( ' + self.calc_screen.text() + ' )')
+                self.calc_screen.setText('0')
+
+            self.current_operation = 'neg'
+
         if index == 23:  # equal to button clicked
             if self.current_operation == 'add':
                 self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
@@ -126,8 +136,12 @@ class MainApp(UiMainWindow, QMainWindow):
 
             elif self.current_operation == 'sqr':
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
-                self.calc_screen.setText(str(Ops.squared(self.small_calc_screen.text().split()[1]
-                                                         )))
+                self.calc_screen.setText(str(Ops.squared(self.small_calc_screen.text().split()[1])))
+
+            elif self.current_operation == 'neg':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')  # fixme: doesn't show equal to
+                self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
+
 
             # todo: disable equal to button after clicked once
             #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
