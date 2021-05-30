@@ -62,6 +62,10 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText('sqr( ' + self.calc_screen.text() + ' )')
                 self.calc_screen.setText('0')
 
+                # For user convenience:
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.squared(self.small_calc_screen.text().split()[1])))
+
             self.current_operation = 'sqr'
 
         if index == 7:  # division button clicked
@@ -112,6 +116,10 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText('negate( ' + self.calc_screen.text() + ' )')
                 self.calc_screen.setText('0')
 
+                # For User convenience:
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
+
             self.current_operation = 'neg'
 
         if index == 23:  # equal to button clicked
@@ -149,7 +157,7 @@ class MainApp(UiMainWindow, QMainWindow):
             # todo:
             #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
             #   - Add calc screen validator from Med Bills App
-            #   - Let squared, inverse, negate and square root display answer on-click
+            #   - Let inverse and square root display answer on-click
 
 
 if __name__ == '__main__':
