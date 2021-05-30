@@ -35,7 +35,7 @@ class MainApp(UiMainWindow, QMainWindow):
             self.calc_screen.setText('0')
 
         if index == 2:  # 'C'(Clear) button clicked
-            if self.is_div_by_zero is True:
+            if (self.is_div_by_zero or self.is_invalid_input) is True:
                 self.all_btns[2]._animation2.setLoopCount(0)
                 self.all_btns[2]._animation2.setDuration(500)
                 self.all_btns[2]._animation2.stop()
@@ -84,13 +84,12 @@ class MainApp(UiMainWindow, QMainWindow):
 
             self.current_operation = 'sqr'
 
-        if index == 7:  # division button clicked
-            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
-                self.small_calc_screen.setText('0 / ')
+        if index == 6:  # square root button clicked
+            pass
 
-            else:
-                self.small_calc_screen.setText(self.calc_screen.text() + ' / ')  # can't use division symbol
-                self.calc_screen.setText('0')
+        if index == 7:  # division button clicked
+            self.small_calc_screen.setText(self.calc_screen.text() + ' / ')  # can't use division symbol
+            self.calc_screen.setText('0')
 
             self.current_operation = 'div'
 
