@@ -122,6 +122,12 @@ class MainApp(UiMainWindow, QMainWindow):
 
             self.current_operation = 'neg'
 
+        if index == 22:  # point button clicked
+            if '.' in self.calc_screen.text():
+                return  # don't allow multiple points
+            else:
+                self.calc_screen.setText(self.calc_screen.text() + '.')
+
         if index == 23:  # equal to button clicked
             if '=' in self.small_calc_screen.text():
                 return  # do nothing if an answer has already been gotten

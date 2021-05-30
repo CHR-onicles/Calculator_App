@@ -53,7 +53,7 @@ class UiMainWindow(QWidget):
         self.calc_screen = NoCursorLineEdit()
         self.calc_screen.setObjectName('calc-screen')
         self.calc_screen.setAlignment(Qt.AlignRight)
-        self.calc_screen.setMaxLength(14)
+        self.calc_screen.setMaxLength(13)
         # self.calc_screen.setValidator(NumberInputValidator())
         # </MIDDLE WIDGETS>
 
