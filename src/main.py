@@ -59,12 +59,16 @@ class MainApp(UiMainWindow, QMainWindow):
             elif self.calc_screen.text() != '':
                 self.calc_screen.setText(self.calc_screen.text()[0:-1])
 
-        # if index == 4:  # inverse button clicked
-        #     if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
-        #         self.small_calc_screen.setText('1/(' + self.calc_screen.text() + ')')
-        #         self.calc_screen.setStyleSheet('font-size: 25pt;')  # todo: decrease font-size to display error message, afterwards set font-size back to normal
-        #         self.calc_screen.setText('Zero division error')
-        #         self.all_btns[8].setEnabled(False)
+        if index == 4:  # inverse button clicked
+            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
+                self.small_calc_screen.setText('1/( ' + self.calc_screen.text() + ' )')
+                self.handle_division_by_zero()
+
+            else:
+                self.small_calc_screen.setText('1/( ' + self.calc_screen.text() + ' )')
+                self.calc_screen.setText('0')
+
+            self.current_operation = 'inv'
 
         if index == 5:  # squared button clicked
             if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
@@ -177,6 +181,11 @@ class MainApp(UiMainWindow, QMainWindow):
             elif self.current_operation == 'neg':
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
+
+            elif self.current_operation == 'inv':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.inverse(self.small_calc_screen.text().split()[1])))
+
 
 
     def handle_division_by_zero(self):

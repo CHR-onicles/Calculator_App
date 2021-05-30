@@ -57,6 +57,12 @@ class Operations:
             val = Operations.convert_to_int_or_float(val)
             return -val
 
+    @staticmethod
+    def inverse(val):
+        if isinstance(val, str):
+            val = Operations.convert_to_int_or_float(val)
+            return 1/val
+
 
 
 
