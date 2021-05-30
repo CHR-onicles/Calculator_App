@@ -77,7 +77,6 @@ class NoCursorLineEdit(QLineEdit):
         self.setReadOnly(True)
 
 
-
 class BlurEffect(QGraphicsBlurEffect):
     effectRect = None
 

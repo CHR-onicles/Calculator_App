@@ -9,6 +9,8 @@ from operation_logic import Operations as Ops
 
 class MainApp(UiMainWindow, QMainWindow):
     current_operation = None
+    is_div_by_zero = False
+    is_invalid_input = False
 
     def __init__(self):
         super(MainApp, self).__init__()
@@ -148,6 +150,13 @@ class MainApp(UiMainWindow, QMainWindow):
 
             elif self.current_operation == 'div':
                 self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+
+                # Check for dividing by zero error:
+                if self.small_calc_screen.text().split()[2] == '0':
+                    self.handle_division_by_zero()
+                    self.is_div_by_zero = True
+                    return
+
                 self.calc_screen.setText(str(Ops.division(self.small_calc_screen.text().split()[0],
                                                           self.small_calc_screen.text().split()[2])))
 
@@ -160,10 +169,35 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText(str(Ops.negate(self.small_calc_screen.text().split()[1])))
 
 
-            # todo:
-            #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
-            #   - Let inverse and square root display answer on-click
-            #   - Reduce font size to allow more charcters on screen
+    def handle_division_by_zero(self):
+        self.calc_screen.setStyleSheet('font-size: 15pt; text-align: center; padding: 22px 0px;')
+        self.calc_screen.setMaxLength(23)
+        self.calc_screen.setText('Cannot divide by zero')
+        for count, b in enumerate(self.all_btns):
+            if count == 2:
+                continue
+            b.setEnabled(False)
+        self.all_btns[2]._animation2.setDuration(900)
+        self.all_btns[2]._animation2.setLoopCount(-1)
+        self.all_btns[2]._animation2.start()
+
+
+    def handle_undefined_result(self):
+        pass
+
+
+    def handle_invalid_input(self):
+        pass
+
+
+
+        # TODO:
+        #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
+        #   - Let inverse and square root display answer on-click
+        #   - Reduce font size to allow more charcters on screen
+        #   - Change workaround in calc_screen to paint the cursor the same as background...in order to completely block keyboard input
+
+
 
 
 if __name__ == '__main__':
