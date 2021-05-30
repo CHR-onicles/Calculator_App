@@ -287,7 +287,7 @@ class UiMainWindow(QWidget):
         # Resize the grabber to the window rectangle, even if it's invisible
         self.click_grabber.setGeometry(self.rect())
         if self.sliding_menu.isVisible():
-            # resize the effect rectange
+            # resize the effect rectangle
             self.effect.setEffectRect(self.sliding_menu.geometry())
 
 

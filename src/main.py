@@ -35,8 +35,18 @@ class MainApp(UiMainWindow, QMainWindow):
             self.calc_screen.setText('0')
 
         if index == 2:  # 'C'(Clear) button clicked
+            if self.is_div_by_zero is True:
+                self.all_btns[2]._animation2.setLoopCount(0)
+                self.all_btns[2]._animation2.setDuration(500)
+                self.all_btns[2]._animation2.stop()
+                self.calc_screen.setMaxLength(13)  # todo: make global variable or Class attribute
+                self.calc_screen.setStyleSheet('font-size: 30pt; padding: 5px 0px;')
+                self.is_div_by_zero = False
+                for b in self.all_btns:
+                    b.setEnabled(True)
             self.small_calc_screen.setText('')
             self.calc_screen.setText('0')
+
 
         if index == 3:  # backspace button clicked
             if self.calc_screen.text() == '0':
@@ -170,9 +180,9 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
     def handle_division_by_zero(self):
-        self.calc_screen.setStyleSheet('font-size: 15pt; text-align: center; padding: 22px 0px;')
+        self.calc_screen.setStyleSheet('font-size: 18pt; padding: 18px 0px;')
         self.calc_screen.setMaxLength(23)
-        self.calc_screen.setText('Cannot divide by zero')
+        self.calc_screen.setText('Cannot divide by zero!')
         for count, b in enumerate(self.all_btns):
             if count == 2:
                 continue
