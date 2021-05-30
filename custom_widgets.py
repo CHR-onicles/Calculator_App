@@ -64,17 +64,19 @@ class PushButton(QPushButton):
         super(PushButton, self).mouseReleaseEvent(event)
 
 
-
 class NoCursorLineEdit(QLineEdit):
 
     def __init__(self):
         super(NoCursorLineEdit, self).__init__()
         self.setReadOnly(True)
 
-    def keyPressEvent(self, event):
-        self.setReadOnly(False)
-        super(NoCursorLineEdit, self).keyPressEvent(event)
-        self.setReadOnly(True)
+    def paintEvent(self, event):  # setting blinking cursor color to same as background color to hide it...lel big brain🧠
+        super(NoCursorLineEdit, self).paintEvent(event)
+        rect = self.cursorRect()
+        painter = QPainter(self)
+        new_rect = QRect(rect.x() + (rect.width() / 2), rect.y(), rect.width() - (rect.width() * 0.8),
+                         rect.height())
+        painter.fillRect(new_rect, QColor('#353535'))
 
 
 class BlurEffect(QGraphicsBlurEffect):

@@ -49,7 +49,6 @@ class UiMainWindow(QWidget):
         self.small_calc_screen = NoCursorLineEdit()
         self.small_calc_screen.setObjectName('small-calc-screen')
         self.small_calc_screen.setAlignment(Qt.AlignRight)
-        self.small_calc_screen.setReadOnly(True)
         self.calc_screen = NoCursorLineEdit()
         self.calc_screen.setObjectName('calc-screen')
         self.calc_screen.setAlignment(Qt.AlignRight)
