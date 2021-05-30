@@ -120,50 +120,51 @@ class HSeparationLine(QFrame):
         return
 
 
-class NumberInputValidator(QValidator):
-    """
-    Custom validator class to validate number input in Calc screen.
-    """
-
-    def validate(self, v_string: str, index: int):
-        # invalid_chars =
-        # `~!@#$%^&*()-_=+{[}]|\\'",<>/?
-        state = None
-        if len(v_string) < 4 or v_string[:4] != 'GH₵ ':
-            # ic('Less than 4 or not GHC - invalid')
-            state = QValidator.Invalid
-
-        if len(v_string) >= 4:
-            # ic('Greater than 4 - VALID')
-            state = QValidator.Intermediate
-
-        if (v_string[4:].isdigit()) is True:
-            # ic('All digits - VALID')
-            state = QValidator.Acceptable
-
-        for x in v_string[4:]:
-            if ((x.isdigit() is False) and '.' not in v_string[4:]) or x.isalpha():
-                # ic('Alpha or Anything else - invalid')
-                state = QValidator.Invalid
-
-        nums = v_string[4:].split('.')
-        if '.' in v_string[4:]:
-            if (nums[0].isdigit() and nums[1].isdigit()) is True:
-                # ic('Has period and both numbers are legit - VALID')
-                state = QValidator.Acceptable
-            if '.' in v_string[4:] and len(v_string.split('.')[1]) >= 1:
-                if (nums[0].isdigit() is True) and (nums[1].isdigit() is False):
-                    # ic('Has period, but other chars too - invalid')
-                    state = QValidator.Invalid
-            if len(nums[1]) > 2:
-                # ic('More than 2 digits after period - invalid')
-                state = QValidator.Invalid
-
-        if v_string.count('.') > 1:
-            # ic('More than one period - invalid')
-            state = QValidator.Invalid
-
-        return state, v_string, index
+# WILL NEED WAYYY EXTRA CHECKS AND LOGIC TO SYNC IT WITH BUTTON FUNCTIONS - maybe do later 💀
+# class NumberInputValidator(QValidator):
+#     """
+#     Custom validator class to validate number input in Calc screen.
+#     """
+#
+#     def validate(self, v_string: str, index: int):
+#         # invalid_chars =
+#         # `~!@#$%^&*()-_=+{[}]|\\'",<>/?
+#         state = None
+#         if len(v_string) < 1 or v_string[:1] != '0':
+#             # ic('Less than 2 or not 0 - invalid')
+#             state = QValidator.Invalid
+#
+#         if len(v_string) >= 1:
+#             # ic('Greater than 1 - VALID')
+#             state = QValidator.Intermediate
+#
+#         if (v_string[:].isdigit()) is True:
+#             # ic('All digits - VALID')
+#             state = QValidator.Acceptable
+#
+#         for x in v_string[:]:
+#             if ((x.isdigit() is False) and '.' not in v_string[:]) or x.isalpha():
+#                 # ic('Alpha or Anything else - invalid')
+#                 state = QValidator.Invalid
+#
+#         nums = v_string[:].split('.')
+#         if '.' in v_string[:]:
+#             if (nums[0].isdigit() and nums[1].isdigit()) is True:
+#                 # ic('Has period and both numbers are legit - VALID')
+#                 state = QValidator.Acceptable
+#             if '.' in v_string[:] and len(v_string.split('.')[1]) >= 1:
+#                 if (nums[0].isdigit() is True) and (nums[1].isdigit() is False):
+#                     # ic('Has period, but other chars too - invalid')
+#                     state = QValidator.Invalid
+#             if len(nums[1]) > 2:
+#                 # ic('More than 2 digits after period - invalid')
+#                 state = QValidator.Invalid
+#
+#         if v_string.count('.') > 1:
+#             # ic('More than one period - invalid')
+#             state = QValidator.Invalid
+#
+#         return state, v_string, index
 
 
 
