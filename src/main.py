@@ -202,7 +202,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
         # TODO:
-        #   - add general case for dividing by zero ERROR and INVALID INPUT [like sqrt(-1)]to reduce duplication
+        #   - add general case for UNDEFINED RESULT, INVALID INPUT [like sqrt(-1)]
         #   - Let inverse and square root display answer on-click
         #   - Reduce font size to allow more charcters on screen
         #   - Change workaround in calc_screen to paint the cursor the same as background...in order to completely block keyboard input
