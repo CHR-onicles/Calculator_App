@@ -6,7 +6,7 @@
 
 
 ## Screenshot
->*Current progress*
+>*Standard Mode*
 
 <div style="display:flex; justify-content: space-evenly;">
 <img src='screenshots/ss-1.png' width="300" height="500">
