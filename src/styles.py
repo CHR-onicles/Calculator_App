@@ -4,6 +4,7 @@ def main_window_style():
        font: 13pt segoe UI;
        color: white;
     }
+    
     QWidget#mainwindow {
         background-color: #353535;
     }
@@ -44,6 +45,5 @@ def main_window_style():
     QPushButton#menu-btn-close {
         background-color: blue;
     }
-    
-        
+
     """

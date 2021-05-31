@@ -81,7 +81,3 @@ class Operations:
             val1 = Operations.convert_to_int_or_float(val1)
             val2 = Operations.convert_to_int_or_float(val2)
             return val1 * (val2/100)
-
-
-
-

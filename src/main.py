@@ -50,7 +50,7 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText(self.calc_screen.text())
                 return
 
-            # Just clicked percentage, without extra value, so use the first value in memory:
+            # Just clicked percentage, without extra value, so use the first value in "memory":
             elif ('+' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
                     ('-' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
                     ('x' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
@@ -62,7 +62,7 @@ class MainApp(UiMainWindow, QMainWindow):
                 return
 
             # Clicked percentage with extra value, so use that value:
-            # avoiding Else-block to prevent unforeseen outcomes!
+            # NB: Avoiding Else-block to prevent unforeseen outcomes!
             elif ('+' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
                     ('-' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
                     ('x' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
@@ -70,7 +70,6 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText(self.small_calc_screen.text() +
                                                str(Ops.percentage_with_value(self.small_calc_screen.text().split()[0],
                                                    self.calc_screen.text())))
-                # todo: make calc screen text null or empty somehow!!!!!!! its the reason for the bug
                 self.on_num_btn_click(btn=self.all_btns[-1], index=23)
                 self.is_percent_btn_clicked = False
                 return
@@ -261,7 +260,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
     def handle_math_errors(self, error_msg):
         """
-        Method to handle errors during calculations like: DividingByZero, InvalidInput, UndefinedResults.
+        Method to handle errors during calculations like: "DividingByZero" and "InvalidInput".
 
         :param error_msg: Message to indicate calculation error
         """

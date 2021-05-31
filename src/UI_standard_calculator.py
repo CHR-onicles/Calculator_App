@@ -24,6 +24,7 @@ class UiMainWindow(QWidget):
 
         self.sub_widget = QWidget()  # main widget that contains the visual components
 
+        # Setting up blur effect.
         self.effect = BlurEffect()
         self.sub_widget.setGraphicsEffect(self.effect)
         self.effect.setEnabled(False)
@@ -159,11 +160,11 @@ class UiMainWindow(QWidget):
         self.main_layout = QVBoxLayout()
         self.sub_layout = QVBoxLayout()
         self.top_layout = QHBoxLayout()
-        self.top_layout.setContentsMargins(0,0,0,0)
+        self.top_layout.setContentsMargins(0, 0, 0, 0)
         self.top_layout.setAlignment(Qt.AlignBottom)
         self.middle_layout = QVBoxLayout()
         self.middle_layout.setAlignment(Qt.AlignTop)
-        self.middle_layout.setContentsMargins(0,0,0,10)
+        self.middle_layout.setContentsMargins(0, 0, 0, 10)
         self.bottom_layout = QGridLayout()
         self.bottom_layout.setSpacing(3)
         self.bottom_layout.setAlignment(Qt.AlignBottom)
@@ -182,7 +183,6 @@ class UiMainWindow(QWidget):
 
 
         # <BOTTOM LAYOUT>
-        # remove this spaghetti thingy later - brain was tired
         row = 1
         col = 1
         for i in range(24):
@@ -209,7 +209,7 @@ class UiMainWindow(QWidget):
         self.menu_layout.addStretch(1)  # to ensure button are aligned on top
         # </LEFT LAYOUT>
 
-
+        # <MAIN LAYOUT>
         self.sub_layout.addLayout(self.top_layout, 10)
         self.sub_layout.addLayout(self.middle_layout, 20)
         self.sub_layout.addLayout(self.bottom_layout, 70)
@@ -218,6 +218,7 @@ class UiMainWindow(QWidget):
         self.main_layout.addWidget(self.sub_widget)
         self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.main_layout)
+        # </MAIN LAYOUT>
 
 
     def on_open_menu(self):
@@ -289,6 +290,3 @@ class UiMainWindow(QWidget):
         if self.sliding_menu.isVisible():
             # resize the effect rectangle
             self.effect.setEffectRect(self.sliding_menu.geometry())
-
-
-
