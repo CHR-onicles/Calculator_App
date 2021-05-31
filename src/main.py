@@ -8,6 +8,9 @@ from operation_logic import Operations as Ops
 
 
 class MainApp(UiMainWindow, QMainWindow):
+    """
+    Main application.
+    """
     current_operation = None
     is_div_by_zero = False
     is_invalid_input = False
@@ -26,6 +29,12 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
     def on_num_btn_click(self, btn, index):
+        """
+
+        :param btn:
+        :param index:
+        :return:
+        """
         if btn.text() in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
             if self.calc_screen.text() == '0':
                 self.calc_screen.setText('')
@@ -42,6 +51,7 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setMaxLength(13)  # todo: make global variable or Class attribute
                 self.calc_screen.setStyleSheet('font-size: 30pt; padding: 5px 0px;')
                 self.is_div_by_zero = False
+                self.is_invalid_input = False
                 for b in self.all_btns:
                     b.setEnabled(True)
             self.small_calc_screen.setText('')
@@ -68,6 +78,10 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText('1/( ' + self.calc_screen.text() + ' )')
                 self.calc_screen.setText('0')
 
+                # For user convenience
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.inverse(self.small_calc_screen.text().split()[1])))
+
             self.current_operation = 'inv'
 
         if index == 5:  # squared button clicked
@@ -85,7 +99,15 @@ class MainApp(UiMainWindow, QMainWindow):
             self.current_operation = 'sqr'
 
         if index == 6:  # square root button clicked
-            pass
+            if '-' in self.calc_screen.text():
+                self.small_calc_screen.setText('sqrt( ' + self.calc_screen.text() + ' ) =')
+                self.handle_math_errors(error_msg='Invalid Input!')
+                self.is_invalid_input = True
+
+            else:
+                self.small_calc_screen.setText('sqrt( ' + self.calc_screen.text() + ' )')
+
+            self.current_operation = 'sqrt'
 
         if index == 7:  # division button clicked
             self.small_calc_screen.setText(self.calc_screen.text() + ' / ')  # can't use division symbol
@@ -166,7 +188,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
                 # Check for dividing by zero error:
                 if self.small_calc_screen.text().split()[2] == '0':
-                    self.handle_division_by_zero()
+                    self.handle_math_errors(error_msg='Cannot divide by zero!')
                     self.is_div_by_zero = True
                     return
 
@@ -185,12 +207,20 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.inverse(self.small_calc_screen.text().split()[1])))
 
+            elif self.current_operation == 'sqrt':
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.squareroot(self.small_calc_screen.text().split()[1])))
 
 
-    def handle_division_by_zero(self):
+    def handle_math_errors(self, error_msg):
+        """
+
+        :param error_msg:
+        :return:
+        """
         self.calc_screen.setStyleSheet('font-size: 18pt; padding: 18px 0px;')
         self.calc_screen.setMaxLength(23)
-        self.calc_screen.setText('Cannot divide by zero!')
+        self.calc_screen.setText(error_msg)
         for count, b in enumerate(self.all_btns):
             if count == 2:
                 continue
@@ -200,20 +230,11 @@ class MainApp(UiMainWindow, QMainWindow):
         self.all_btns[2]._animation2.start()
 
 
-    def handle_undefined_result(self):
-        pass
-
-
-    def handle_invalid_input(self):
-        pass
-
-
 
         # TODO:
         #   - add general case for UNDEFINED RESULT, INVALID INPUT [like sqrt(-1)]
         #   - Let inverse and square root display answer on-click
         #   - Reduce font size to allow more charcters on screen
-        #   - Change workaround in calc_screen to paint the cursor the same as background...in order to completely block keyboard input
 
 
 
