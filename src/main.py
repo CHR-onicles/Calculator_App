@@ -40,6 +40,26 @@ class MainApp(UiMainWindow, QMainWindow):
                 self.calc_screen.setText('')
             self.calc_screen.setText(self.calc_screen.text() + btn.text())
 
+        if index == 0:  # Percentage button clicked
+            if len(self.calc_screen.text()) == 0 and self.calc_screen.text() == '0':
+                return  # do nothing
+
+            if '=' in self.small_calc_screen.text():
+                self.calc_screen.setText(str(Ops.percentage(self.calc_screen.text())))
+                self.small_calc_screen.setText(self.calc_screen.text())
+                # self.on_num_btn_click(self.all_btns[-1], index=23)
+                return
+
+            if ('+' in self.small_calc_screen.text()) or\
+                    ('-' in self.small_calc_screen.text()) or\
+                    ('x' in self.small_calc_screen.text()) or\
+                    ('/' in self.small_calc_screen.text()):
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' ' +
+                                               str(Ops.percentage(self.small_calc_screen.text().split()[0])))
+                self.on_num_btn_click(self.all_btns[-1], index=23)
+
+
+
         if index == 1:  # 'CE'(Clear Entry) button clicked
             self.calc_screen.setText('0')
 
@@ -57,7 +77,6 @@ class MainApp(UiMainWindow, QMainWindow):
             self.small_calc_screen.setText('')
             self.calc_screen.setText('0')
 
-
         if index == 3:  # backspace button clicked
             if self.calc_screen.text() == '0':
                 return
@@ -72,7 +91,8 @@ class MainApp(UiMainWindow, QMainWindow):
         if index == 4:  # inverse button clicked
             if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
                 self.small_calc_screen.setText('1/( ' + self.calc_screen.text() + ' )')
-                self.handle_division_by_zero()
+                self.handle_math_errors(error_msg='Cannot divide by zero!')
+                self.is_div_by_zero = True
 
             else:
                 self.small_calc_screen.setText('1/( ' + self.calc_screen.text() + ' )')
