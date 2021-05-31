@@ -45,17 +45,17 @@ class MainApp(UiMainWindow, QMainWindow):
                 return  # do nothing
 
             if '=' in self.small_calc_screen.text():
-                self.calc_screen.setText(str(Ops.percentage(self.calc_screen.text())))
+                self.calc_screen.setText(str(Ops.percentage_raw(self.calc_screen.text())))
                 self.small_calc_screen.setText(self.calc_screen.text())
                 # self.on_num_btn_click(self.all_btns[-1], index=23)
                 return
 
-            if ('+' in self.small_calc_screen.text()) or\
-                    ('-' in self.small_calc_screen.text()) or\
-                    ('x' in self.small_calc_screen.text()) or\
-                    ('/' in self.small_calc_screen.text()):
+            if ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '+') or\
+                    ('-' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '-') or\
+                    ('x' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == 'x') or\
+                    ('/' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '/'):
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' ' +
-                                               str(Ops.percentage(self.small_calc_screen.text().split()[0])))
+                                               str(Ops.percentage_raw(self.small_calc_screen.text().split()[0])))
                 self.on_num_btn_click(self.all_btns[-1], index=23)
 
 

@@ -70,7 +70,7 @@ class Operations:
             return math.sqrt(val)
 
     @staticmethod
-    def percentage(val):
+    def percentage_raw(val):
         if isinstance(val, str):
             val = Operations.convert_to_int_or_float(val)
             return val * (val/100)
