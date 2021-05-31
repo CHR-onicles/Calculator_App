@@ -18,10 +18,9 @@ class MainApp(UiMainWindow, QMainWindow):
 
     def __init__(self):
         super(MainApp, self).__init__()
-
         self.calc_screen.setText('0')
-
         self.widgets()
+
 
     def widgets(self):
         for count, x in enumerate(self.all_btns):
@@ -31,10 +30,10 @@ class MainApp(UiMainWindow, QMainWindow):
 
     def on_num_btn_click(self, btn, index):
         """
+        Method to handle all button clicks.
 
-        :param btn:
-        :param index:
-        :return:
+        :param btn: Button which has been clicked.
+        :param index: Index of button in the button list.
         """
         if btn.text() in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
             if self.calc_screen.text() == '0':
@@ -262,9 +261,9 @@ class MainApp(UiMainWindow, QMainWindow):
 
     def handle_math_errors(self, error_msg):
         """
+        Method to handle errors during calculations like: DividingByZero, InvalidInput, UndefinedResults.
 
-        :param error_msg:
-        :return:
+        :param error_msg: Message to indicate calculation error
         """
         self.calc_screen.setStyleSheet('font-size: 18pt; padding: 18px 0px;')
         self.calc_screen.setMaxLength(23)
@@ -280,8 +279,7 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
         # TODO:
-        #   - add general case for UNDEFINED RESULT, INVALID INPUT [like sqrt(-1)]
-        #   - Let inverse and square root display answer on-click
+        #   - add general case for UNDEFINED RESULT
         #   - Reduce font size to allow more charcters on screen
 
 
