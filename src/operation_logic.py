@@ -75,6 +75,13 @@ class Operations:
             val = Operations.convert_to_int_or_float(val)
             return val * (val/100)
 
+    @staticmethod
+    def percentage_with_value(val):
+        if isinstance(val, str):
+            val = Operations.convert_to_int_or_float(val)
+            print(val/100)
+            return val/100
+
 
 
 

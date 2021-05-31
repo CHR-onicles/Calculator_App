@@ -50,15 +50,25 @@ class MainApp(UiMainWindow, QMainWindow):
                 # self.on_num_btn_click(self.all_btns[-1], index=23)
                 return
 
-            if ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '+') or\
+            elif ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '+') or\
                     ('-' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '-') or\
                     ('x' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == 'x') or\
                     ('/' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '/'):
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' ' +
                                                str(Ops.percentage_raw(self.small_calc_screen.text().split()[0])))
-                self.on_num_btn_click(self.all_btns[-1], index=23)
+                self.on_num_btn_click(btn=self.all_btns[-1], index=23)
+                return
 
-
+            # avoiding Else block to prevent unforeseen outcomes!
+            elif ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '+') or\
+                    ('-' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '-') or\
+                    ('x' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != 'x') or\
+                    ('/' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '/'):
+                # print(self.small_calc_screen.text().split())
+                self.small_calc_screen.setText(self.small_calc_screen.text() +
+                                               str(Ops.percentage_with_value(self.small_calc_screen.text().split()[0])))
+                self.on_num_btn_click(btn=self.all_btns[-1], index=23)
+                return
 
         if index == 1:  # 'CE'(Clear Entry) button clicked
             self.calc_screen.setText('0')
