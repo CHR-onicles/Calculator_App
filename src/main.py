@@ -14,6 +14,7 @@ class MainApp(UiMainWindow, QMainWindow):
     current_operation = None
     is_div_by_zero = False
     is_invalid_input = False
+    is_percent_btn_clicked = False
 
     def __init__(self):
         super(MainApp, self).__init__()
@@ -41,33 +42,38 @@ class MainApp(UiMainWindow, QMainWindow):
             self.calc_screen.setText(self.calc_screen.text() + btn.text())
 
         if index == 0:  # Percentage button clicked
+            self.is_percent_btn_clicked = True
             if len(self.calc_screen.text()) == 0 and self.calc_screen.text() == '0':
                 return  # do nothing
 
             if '=' in self.small_calc_screen.text():
                 self.calc_screen.setText(str(Ops.percentage_raw(self.calc_screen.text())))
                 self.small_calc_screen.setText(self.calc_screen.text())
-                # self.on_num_btn_click(self.all_btns[-1], index=23)
                 return
 
-            elif ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '+') or\
-                    ('-' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '-') or\
-                    ('x' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == 'x') or\
-                    ('/' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] == '/'):
+            # Just clicked percentage, without extra value, so use the first value in memory:
+            elif ('+' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
+                    ('-' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
+                    ('x' in self.small_calc_screen.text() and self.calc_screen.text() == '0') or\
+                    ('/' in self.small_calc_screen.text() and self.calc_screen.text() == '0'):
                 self.small_calc_screen.setText(self.small_calc_screen.text() + ' ' +
                                                str(Ops.percentage_raw(self.small_calc_screen.text().split()[0])))
                 self.on_num_btn_click(btn=self.all_btns[-1], index=23)
+                self.is_percent_btn_clicked = False
                 return
 
-            # avoiding Else block to prevent unforeseen outcomes!
-            elif ('+' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '+') or\
-                    ('-' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '-') or\
-                    ('x' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != 'x') or\
-                    ('/' in self.small_calc_screen.text() and self.small_calc_screen.text()[-1] != '/'):
-                # print(self.small_calc_screen.text().split())
+            # Clicked percentage with extra value, so use that value:
+            # avoiding Else-block to prevent unforeseen outcomes!
+            elif ('+' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
+                    ('-' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
+                    ('x' in self.small_calc_screen.text() and self.calc_screen.text() != '0') or\
+                    ('/' in self.small_calc_screen.text() and self.calc_screen.text() != '0'):
                 self.small_calc_screen.setText(self.small_calc_screen.text() +
-                                               str(Ops.percentage_with_value(self.small_calc_screen.text().split()[0])))
+                                               str(Ops.percentage_with_value(self.small_calc_screen.text().split()[0],
+                                                   self.calc_screen.text())))
+                # todo: make calc screen text null or empty somehow!!!!!!! its the reason for the bug
                 self.on_num_btn_click(btn=self.all_btns[-1], index=23)
+                self.is_percent_btn_clicked = False
                 return
 
         if index == 1:  # 'CE'(Clear Entry) button clicked
@@ -200,21 +206,33 @@ class MainApp(UiMainWindow, QMainWindow):
                 return  # do nothing if an answer has already been gotten
 
             if self.current_operation == 'add':
-                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                if self.is_percent_btn_clicked is True:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                else:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.add(self.small_calc_screen.text().split()[0],
                                                      self.small_calc_screen.text().split()[2])))
             elif self.current_operation == 'sub':
-                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                if self.is_percent_btn_clicked is True:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                else:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.subtract(self.small_calc_screen.text().split()[0],
                                                           self.small_calc_screen.text().split()[2])))
 
             elif self.current_operation == 'mul':
-                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                if self.is_percent_btn_clicked is True:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                else:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
                 self.calc_screen.setText(str(Ops.multiply(self.small_calc_screen.text().split()[0],
                                                           self.small_calc_screen.text().split()[2])))
 
             elif self.current_operation == 'div':
-                self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
+                if self.is_percent_btn_clicked is True:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                else:
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + self.calc_screen.text() + ' =')
 
                 # Check for dividing by zero error:
                 if self.small_calc_screen.text().split()[2] == '0':
