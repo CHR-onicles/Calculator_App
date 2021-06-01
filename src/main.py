@@ -140,6 +140,8 @@ class MainApp(UiMainWindow, QMainWindow):
 
             else:
                 self.small_calc_screen.setText('sqrt( ' + self.calc_screen.text() + ' )')
+                self.small_calc_screen.setText(self.small_calc_screen.text() + ' =')
+                self.calc_screen.setText(str(Ops.squareroot(self.small_calc_screen.text().split()[1])))
 
             self.current_operation = 'sqrt'
 
