@@ -9,14 +9,12 @@
 >*Standard Mode*
 
 <div style="display:flex; justify-content: space-evenly;">
-<img src='screenshots/ss-1.png' width="300" height="500">
-<img src="screenshots/ss-2.png" width="300" height="500">
+<img src="https://raw.githubusercontent.com/CHR-onicles/Calculator_App/main/screenshots/ss-1.png" width="300" height="500" alt="screenshot-1">
+<img src="https://raw.githubusercontent.com/CHR-onicles/Calculator_App/main/screenshots/ss-2.png" width="300" height="500" alt="screenshot-2">
 </div>
 
 ## Demo:
-
-[comment]: <> (![demo1]&#40;demos/Calc_app_demo_1.gif&#41;)
-<img src="demos/Calc_app_demo_1.gif" width='300' height='500'>
+<img src="https://raw.githubusercontent.com/CHR-onicles/Calculator_App/main/demos/Calc_app_demo_1.gif" width="300" height="500" alt="calculator demo">
 
 
 
