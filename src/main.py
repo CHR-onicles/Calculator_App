@@ -281,9 +281,6 @@ class MainApp(UiMainWindow, QMainWindow):
 
 
 
-        # TODO:
-        #   - add general case for UNDEFINED RESULT
-        #   - Reduce font size to allow more charcters on screen
 
 
 
