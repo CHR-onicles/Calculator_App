@@ -14,7 +14,9 @@
 </div>
 
 ## Demo:
-![demo1](demos/Calc_app_demo_1.gif)
+
+[comment]: <> (![demo1]&#40;demos/Calc_app_demo_1.gif&#41;)
+<img src="demos/Calc_app_demo_1.gif" width='300' height='500'>
 
 
 
