@@ -154,32 +154,20 @@ class MainApp(UiMainWindow, QMainWindow):
             self.current_operation = 'div'
 
         if index == 11:  # multiplication button clicked
-            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
-                self.small_calc_screen.setText('0 x ')
-
-            else:
-                self.small_calc_screen.setText(self.calc_screen.text() + ' x ')
-                self.calc_screen.setText('0')
+            self.small_calc_screen.setText(self.calc_screen.text() + ' x ')
+            self.calc_screen.setText('0')
 
             self.current_operation = 'mul'
 
         if index == 15:  # subtraction button clicked
-            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
-                self.small_calc_screen.setText('0 - ')
-
-            else:
-                self.small_calc_screen.setText(self.calc_screen.text() + ' - ')
-                self.calc_screen.setText('0')
+            self.small_calc_screen.setText(self.calc_screen.text() + ' - ')
+            self.calc_screen.setText('0')
 
             self.current_operation = 'sub'
 
         if index == 19:  # addition button clicked
-            if len(self.calc_screen.text()) == 1 and self.calc_screen.text() == '0':
-                self.small_calc_screen.setText('0 + ')
-
-            else:
-                self.small_calc_screen.setText(self.calc_screen.text() + ' + ')
-                self.calc_screen.setText('0')
+            self.small_calc_screen.setText(self.calc_screen.text() + ' + ')
+            self.calc_screen.setText('0')
 
             self.current_operation = 'add'
 
