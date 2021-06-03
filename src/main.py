@@ -148,15 +148,28 @@ class MainApp(UiMainWindow, QMainWindow):
             self.current_operation = 'sqrt'
 
         if index == 7:  # division button clicked
-            self.small_calc_screen.setText(self.calc_screen.text() + ' / ')  # can't use division symbol
-            self.calc_screen.setText('0')
+            if '/' in self.small_calc_screen.text():
+                if self.calc_screen.text() == '0':
+                    self.small_calc_screen.setText(self.small_calc_screen.text() + '0')
+                    self.handle_math_errors(error_msg='Cannot divide by zero!')
+                    self.is_div_by_zero = True
+                    return
+                self.small_calc_screen.setText(str(Ops.division(self.small_calc_screen.text().split()[0],
+                                                                self.calc_screen.text())))
+            else:
+                self.small_calc_screen.setText(self.calc_screen.text() + ' / ')  # can't use division symbol
 
+            self.calc_screen.setText('0')
             self.current_operation = 'div'
 
         if index == 11:  # multiplication button clicked
-            self.small_calc_screen.setText(self.calc_screen.text() + ' x ')
-            self.calc_screen.setText('0')
+            if 'x' in self.small_calc_screen.text():
+                self.small_calc_screen.setText(str(Ops.multiply(self.small_calc_screen.text().split()[0],
+                                                                self.calc_screen.text())) + ' x ')
+            else:
+                self.small_calc_screen.setText(self.calc_screen.text() + ' x ')
 
+            self.calc_screen.setText('0')
             self.current_operation = 'mul'
 
         if index == 15:  # subtraction button clicked
