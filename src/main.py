@@ -160,15 +160,23 @@ class MainApp(UiMainWindow, QMainWindow):
             self.current_operation = 'mul'
 
         if index == 15:  # subtraction button clicked
-            self.small_calc_screen.setText(self.calc_screen.text() + ' - ')
-            self.calc_screen.setText('0')
+            if '-' in self.small_calc_screen.text():
+                self.small_calc_screen.setText(str(Ops.subtract(self.small_calc_screen.text().split()[0],
+                                                                self.calc_screen.text())) + ' - ')
+            else:
+                self.small_calc_screen.setText(self.calc_screen.text() + ' - ')
 
+            self.calc_screen.setText('0')
             self.current_operation = 'sub'
 
         if index == 19:  # addition button clicked
-            self.small_calc_screen.setText(self.calc_screen.text() + ' + ')
-            self.calc_screen.setText('0')
+            if '+' in self.small_calc_screen.text():
+                self.small_calc_screen.setText(str(Ops.add(self.small_calc_screen.text().split()[0],
+                                                           self.calc_screen.text())) + ' + ')
+            else:
+                self.small_calc_screen.setText(self.calc_screen.text() + ' + ')
 
+            self.calc_screen.setText('0')
             self.current_operation = 'add'
 
         if index == 20:  # plus-minus button clicked
