@@ -48,11 +48,8 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <!-- <li><a href="#contact">Contact</a></li> -->
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -62,19 +59,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+A calculator app to perform simple operations inspired by the Microsoft Windows Calculator.
+
 <img src="https://raw.githubusercontent.com/CHR-onicles/Calculator_App/main/demos/Calc_app_demo_1.gif" width="300" height="500" alt="calculator demo">
 
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
 * [PyQT5](https://riverbankcomputing.com/software/pyqt)
@@ -101,24 +92,6 @@ PyQt5 is the only thing needed to run this app.
    git clone https://github.com/CHR-onicles/Calculator_App.git
    ```
 2. Run `main.py`.
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-[comment]: <> (<!-- ROADMAP -->)
-
-[comment]: <> (## Roadmap)
-
-[comment]: <> (See the [open issues]&#40;https://github.com/CHR-onicles/Calulator_App/issues&#41; for a list of proposed features &#40;and known issues&#41;.)
-
 
 
 <!-- CONTRIBUTING -->
@@ -152,7 +125,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/CHR-onicles/Calculator_App.svg?style=for-the-badge
 [contributors-url]: https://github.com/CHR-onicles/Calculator_App/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/CHR-onicles/Calculator_App.svg?style=for-the-badge
