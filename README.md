@@ -72,11 +72,12 @@ A calculator app to perform simple operations inspired by the Microsoft Windows 
 
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
 PyQt5 is the only thing needed to run this app.
+
+
 
 ### Prerequisites
 
@@ -85,6 +86,7 @@ PyQt5 is the only thing needed to run this app.
   pip install pyqt5
   ```
 
+
 ### Installation
 
 1. Clone the repo
@@ -92,6 +94,7 @@ PyQt5 is the only thing needed to run this app.
    git clone https://github.com/CHR-onicles/Calculator_App.git
    ```
 2. Run `main.py`.
+
 
 
 <!-- CONTRIBUTING -->
@@ -119,8 +122,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Acknowledgements
 * [Windows Calculator](https://github.com/microsoft/calculator)
 * [Patrick Attankurugu](https://github.com/PatrickAttankurugu/Scientific-Calculator)
-
-
 
 
 
