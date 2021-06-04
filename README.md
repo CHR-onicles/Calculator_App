@@ -17,12 +17,12 @@
   <h3 align="center">Calculator App</h3>
 
   <p align="center">
-    A simple calculator.
+    A simple yet powerful calculator.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/CHR-onicles/Calculator_App"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/CHR-onicles/Calculator_App">View Demo</a>
+    <a href="https://github.com/CHR-onicles/Calculator_App/#about-the-project">View Demo</a>
     ·
     <a href="https://github.com/CHR-onicles/Calculator_App/issues">Report Bug</a>
     ·
@@ -62,7 +62,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="https://raw.githubusercontent.com/CHR-onicles/Calculator_App/main/demos/Calc_app_demo_1.gif" width="300" height="500" alt="calculator demo">
+
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -152,16 +153,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/CHR-onicles/Calculator_App.svg?style=for-the-badge
+[contributors-url]: https://github.com/CHR-onicles/Calculator_App/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CHR-onicles/Calculator_App.svg?style=for-the-badge
+[forks-url]: https://github.com/CHR-onicles/Calculator_App/network/members
+[stars-shield]: https://img.shields.io/github/stars/CHR-onicles/Calculator_App.svg?style=for-the-badge
+[stars-url]: https://github.com/CHR-onicles/Calculator_App/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CHR-onicles/Calculator_App.svg?style=for-the-badge
+[issues-url]: https://github.com/CHR-onicles/Calculator_App/issues
+[license-shield]: https://img.shields.io/github/license/CHR-onicles/Calculator_App.svg?style=for-the-badge
+[license-url]: https://github.com/CHR-onicles/Calculator_App/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/divine-a-522b791ab
-[product-screenshot]: images/screenshot.png
