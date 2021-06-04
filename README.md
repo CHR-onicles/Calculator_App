@@ -10,23 +10,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/CHR-onicles/Calculator_App">
+    <img src="images/calc_icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Calculator App</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A simple calculator.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/CHR-onicles/Calculator_App">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/CHR-onicles/Calculator_App/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/CHR-onicles/Calculator_App/issues">Request Feature</a>
   </p>
 
 
@@ -52,7 +52,7 @@
     <!-- <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <!-- <li><a href="#contact">Contact</a></li> -->
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -84,8 +84,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+PyQt5 is the only thing needed to run this app.
 
 ### Prerequisites
 
@@ -100,12 +99,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/CHR-onicles/Calculator_App.git
    ```
-3. Install PyQt5
-   ```sh
-   pip install PyQt5
-   ```
-4. Run.
-   ```
+2. Run `main.py`.
 
 
 
@@ -144,15 +138,6 @@ Any contributions you make are **greatly appreciated**.
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/CHR-onicles/Calculator_App](https://github.com/CHR-onicles/Calculator_App)
 
 
 
